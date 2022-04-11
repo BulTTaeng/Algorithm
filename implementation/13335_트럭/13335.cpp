@@ -30,7 +30,7 @@ int main(){
 
   memset(loc , 0 ,sizeof(loc));
 
-  while(true){
+  while(!q.empty()){
       time++;
 
       for(int i =s; i<e; i++){
@@ -42,21 +42,17 @@ int main(){
           }
       }
 
-      if(!q.empty()){
-        if(weight >= q.front()){
-            weight -= inp[e];
-            loc[e]++;
-            e++;
-            q.pop();
-        }
-      }
-
-      if(s == N){
-          break;
-      }
-
+      
+    if(weight >= q.front()){
+        weight -= inp[e];
+        loc[e]++;
+        e++;
+        q.pop();
+    }
+      
   }
 
+  time = time + W;
   cout << time;
   return 0;
 
