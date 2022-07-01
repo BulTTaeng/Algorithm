@@ -1,0 +1,19 @@
+## What is the problem?
+
+<https://www.acmicpc.net/problem/2012>
+
+## What Algorithm should I use?
+
+greedy
+
+## What was the key point and the hard part?
+
+iter - v[i]
+
+The answer can be bigger than int so use long long type for answer.
+
+## Where can I get more help, if I need it?
+
+You can contact me through email, which is wogur7496@gmail.com.
+Thank you for visiting this github!
+
