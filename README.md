@@ -8,12 +8,23 @@
 ## 알고리즘 종류
 
 greedy
+
 dp
+
 segment tree
+
 string
+
 KMP
+
 data structure
+
 dfs
+
 bfs
+
 brute-force
+
 complete search
+
+implementation
