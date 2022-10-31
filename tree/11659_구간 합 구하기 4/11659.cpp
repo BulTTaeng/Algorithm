@@ -58,7 +58,7 @@ int makeSegtree(int Node, int s , int e){
 
 int query(int Node, int s, int e, int l, int r){
     if (r < s || l > e) return 0; //범위초과한 케이스
-    if (l <= s && e <= r) return stree[Node]; //원하는 구간 = 현재 구간
+    if (l <= s && e <= r) return stree[Node]; //원하는 구간 <= 현재 구간
  
     int mid = (s + e) / 2;
     int nextl = query(Node * 2, s, mid, l, r);
