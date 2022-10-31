@@ -24,7 +24,6 @@ int main() {
 
     for (int j = k; j > 0; j = j >> 1) {
       temp = j - (j >> 1);
-      cout << temp << "  ";
       stuff.push_back({v * temp, c * temp});
     }
   }
