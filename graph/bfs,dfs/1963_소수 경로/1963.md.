@@ -1,0 +1,30 @@
+# 1963_PrimeNumberPath
+
+made by Jaehyeok Choi
+
+## Welcome to Jaehyeok's github!
+
+## What is the problem?
+
+https://www.acmicpc.net/problem/1963 
+
+## What Algorithm should I use?
+
+Graph Algorithm , bfs
+
+## What was the key point and the hard part?
+
+Check 1000~9999 that it is prime number.
+
+Save it in the array and do bfs for each number set.
+
+If change one digit of number is prime number , put it in a queue with increased depth.
+
+If we found the target number , print the target number. If we don't found it, print impossible.
+
+Be aware that dividing num with 2 to sqrt(num) is checking the prime number.  
+
+## Where can I get more help, if I need it?
+
+You can contact me through email, which is wogur7496@gmail.com.
+Thank you for visiting this github!
