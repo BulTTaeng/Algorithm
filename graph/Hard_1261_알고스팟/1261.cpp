@@ -22,8 +22,6 @@ deque<st> dq;
 int N , M;
 int ans = 987654321;
 
-void dfs(int x , int y , int n);
-
 int main(){
     ios_base::sync_with_stdio(0);
     cout.tie(0);
@@ -90,31 +88,4 @@ int main(){
     
     cout << ans;
     return 0;
-}
-
-void dfs(int x , int y , int n){
-    
-    visit[x][y] = true;
-
-    for(int i =0; i<4 ; i++){
-        int nx = x + dx[i];
-        int ny = y + dy[i];
-
-        if(nx>=0 && ny >=0 && nx <N && ny <M){
-            if(nx == N-1 && ny == M-1){
-                ans = min(n, ans);
-                continue;
-            }
-            if(!visit[nx][ny]){
-                if(inp[nx][ny] == '0'){
-                    dfs(nx, ny, n);
-                }
-                else{
-                    dfs(nx , ny , n+1);
-                }
-            }
-        }
-    }
-
-    visit[x][y] = false;    
 }
