@@ -1,4 +1,4 @@
-# 11559_Puyo Puyo
+# GINI야 도와줘
 
 made by Jaehyeok Choi
 
