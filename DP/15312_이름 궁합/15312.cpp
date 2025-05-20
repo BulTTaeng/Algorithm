@@ -19,18 +19,17 @@ int main() {
 
     memset(dp, 0 , sizeof(dp));
 
-    for (int i =1; i<=A.length()*2; i+=2) {
-        dp[0][i] = score[int(A[i]) - int('A')];
-        dp[0][i+1] = score[int(B[i] - int('A'))];
+    for (int i =0; i<A.length()*2; i+=2) {
+        dp[0][i] = score[int(A[i/2]) - int('A')];
+        dp[0][i+1] = score[int(B[i/2] - int('A'))];
     }
 
-    for(int i = 1; i<=A.length()*2 - 2; i++) {
-
-        for (int j = 1; j<=A.length() * 2 - i; j++) {
-            dp[i][j] = dp[i-1][j] + dp[i-1][j+1];
+    for(int i = 1; i< A.length()*2 - 1; i++) {
+        for (int j = 0; j<A.length() * 2 - i; j++) {
+            dp[i][j] = (dp[i-1][j] + dp[i-1][j+1]) % 10;
         }
     }
 
-    cout << dp[A.length()-2][1] << dp[A.length()-2][2];
+    cout << dp[A.length()*2-2][0] << dp[A.length()*2-2][1];
     return 0;
 }
