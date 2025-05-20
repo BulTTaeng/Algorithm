@@ -1,13 +1,13 @@
 #include <iostream>
-#include <cstring>
+#include <vector>
 
 using namespace std;
 
 int score[] = {3, 2, 1, 2, 3, 3, 2, 3, 3, 2, 2, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 1};
 
 string A, B;
-int ans = 0;
-int dp[4002][4002];
+int len = 0;
+vector<int> dp;
 string total = "";
 
 int main() {
@@ -16,20 +16,21 @@ int main() {
     cin.tie(0);
 
     cin >> A >> B;
+    len = A.length() * 2;
 
-    memset(dp, 0 , sizeof(dp));
-
-    for (int i =0; i<A.length()*2; i+=2) {
-        dp[0][i] = score[int(A[i/2]) - int('A')];
-        dp[0][i+1] = score[int(B[i/2] - int('A'))];
+    for (int i =0; i<A.length(); i++) {
+        dp.push_back(score[int(A[i]) - int('A')]);
+        dp.push_back(score[int(B[i] - int('A'))]);
     }
 
-    for(int i = 1; i< A.length()*2 - 1; i++) {
-        for (int j = 0; j<A.length() * 2 - i; j++) {
-            dp[i][j] = (dp[i-1][j] + dp[i-1][j+1]) % 10;
+    while (dp.size() > 2) {
+        vector<int> next;
+        for (int i =0; i<dp.size()-1; i++) {
+            next.push_back( (dp[i] + dp[i+1]) % 10 );
         }
+        dp = move(next);
     }
 
-    cout << dp[A.length()*2-2][0] << dp[A.length()*2-2][1];
+    cout << dp[0] << dp[1];
     return 0;
 }
