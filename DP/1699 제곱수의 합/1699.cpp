@@ -1,12 +1,14 @@
 #include <iostream>
 #include <cstring>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
 int dp[100002];
-int ans = 0;
 int N;
+
+vector<int> v;
 
 void solve();
 
@@ -26,16 +28,18 @@ int main() {
 }
 
 void solve() {
-    int root = floor(sqrt(N));
-    int tempN = N;
+    
+    for (int i=1; i*i<=N; i++) {
+        v.push_back(i*i);
+    }
 
     dp[0] = 0;
 
     for (int i=1; i<=N; i++) {
-        int curr = floor(sqrt(i));
-        dp[i] = 987654321;
-        for (int j=1; j<=curr; j++) {
-            dp[i] = min(dp[i], dp[i-(j*j)] + 1);
+        dp[i] = i;
+        for (int j=0; j<v.size(); j++) {
+            if (v[j] > i) break;
+            dp[i] = min(dp[i], dp[i-v[j]] + 1);
         }
     }
 }
