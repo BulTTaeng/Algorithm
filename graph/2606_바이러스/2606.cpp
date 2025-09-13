@@ -2,60 +2,52 @@
 
 using namespace std;
 
-int root[102];
+int N, edge;
+int root[101];
+int ans =0;
 
-int _find(int x);
 void _union(int x, int y);
+int _find(int x);
 
 int main() {
-  ios_base::sync_with_stdio(0);
-  cout.tie(0);
-  cin.tie(0);
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
 
-  int n , edge, x, y;
-  cin >>n;
-  cin >> edge;
+    cin >> N;
+    cin >> edge;
 
-  for(int i = 1; i<=n; i++){
-    root[i] = i;
-  }
+    int n1, n2;
 
-  for(int i =1 ; i<=edge; i++){
-    cin>> x >> y;
-
-    if(x < y){
-      _union(x, y);
-    }
-    else{
-      _union(y,x);
+    for (int i = 1; i<=N; i++) {
+        root[i] = i;
     }
 
-  }
+    for (int i =0; i<edge; i++) {
+        cin >> n1 >> n2;
+        _union(n1,n2);
+    }
 
-  int count = 0;
+    for (int i =2;i<=N; i++) {
+        if (_find(i) == _find(1)) ans ++;
+    }
 
-  for(int i =2; i<=n; i++){
-    if (_find(i) == _find(1)) count++;
-  }
+    cout << ans;
 
-  cout << count;
-  return 0;
+    return 0;
 }
 
-int _find(int x){
-  if(root[x] == x){
-    return x;
-  }
-  else{
-    return root[x] = _find(root[x]);
-  }
+int _find(int x) {
+    if (root[x] == x) return x;
+    else {
+        return root[x] = _find(root[x]);
+    }
 }
 
-void _union(int x , int y){
-  if(x == y ) return;
-  
-  x = _find(x);
-  y = _find(y);
+void _union(int x, int y) {
+    if (x == y) return;
 
-  root[y] = x;
+    x = _find(x);
+    y = _find(y);
+
+    root[y] = x;
 }
