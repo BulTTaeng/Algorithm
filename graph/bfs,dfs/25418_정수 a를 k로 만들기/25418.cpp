@@ -34,14 +34,19 @@ void bfs() {
         int value = curr.first;
         int time = curr.second;
         q.pop();
-        visit[value] = true;
 
         if (value == K) {
             ans = time;
             break;
         } else {
-            if (value <K && !visit[value+1]) q.push({value+1, time+1});
-            if ((value *2 <= K) && !visit[value*2]) q.push({value*2, time+1});
+            if (value <K && !visit[value+1]) {
+                visit[value+1] = true;
+                q.push({value+1, time+1});
+            }
+            if ((value *2 <= K) && !visit[value*2]) {
+                visit[value*2] = true;
+                q.push({value*2, time+1});
+            }
         }
     }
 }
