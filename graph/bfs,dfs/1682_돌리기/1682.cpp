@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -80,14 +81,10 @@ void bfs() {
 }
 
 string A(string str) {
-    string t = str;
     for (int i =0; i<4; i++) {
-        int d = 7-i;
-        char temp = t[d];
-        t[d] = t[i];
-        t[i] = temp;
+        swap(str[i], str[7-i]);
     }
-    return t;
+    return str;
 }
 
 string B(string str) {
@@ -104,17 +101,13 @@ string B(string str) {
 }
 
 string C(string str) {
-    string t = str;
-    t[1] = str[2];
-    t[2] = str[5];
-    t[5] = str[6];
-    t[6] = str[1];
-    return t;
+    swap(str[1], str[2]);
+    swap(str[2], str[5]);
+    swap(str[5], str[6]);
+    return str;
 }
 
 string D(string str) {
-    string t = str;
-    t[0] = str[4];
-    t[4] = str[0];
-    return t;
+    swap(str[0], str[4]);
+    return str;
 }
