@@ -1,55 +1,47 @@
 #include <iostream>
+#include <cstring>
+#include <climits>
 
 using namespace std;
 
-int dp[5001] = {0,};
-int possible =0;
+int N;
+int dp[5002];
 
-int find_sugarbag(int g);
+void solve();
 
 int main() {
-  int input =0;
-  cin >> input;
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
 
-  int ans = find_sugarbag(input);
-  cout << ans;
+    cin >> N;
+
+    memset(dp, 0, sizeof(dp));
+
+    solve();
+
+    if (dp[N] == INT_MAX) {
+        cout << -1;
+    } else {
+        cout << dp[N];
+    }
+    
+    return 0;
 }
 
-int find_sugarbag(int g){
-
-  if(g <3 || g ==4){
-    dp[g] = -1;
-    possible =1;
-    return -1;
-  }
-  else if(g == 3){
+void solve() {
+    dp[0] = INT_MAX;
+    dp[1] = INT_MAX;
+    dp[2] = INT_MAX;
     dp[3] = 1;
-    g =0;
-    return 1;
-  }
-  else if(g == 5){
-    dp[5] =1;
-    g = 0;
-    return 1;
-  }
-  else if (dp[g] != 0){
-    return dp[g];
-  }
-  else{
-    if(g % 5 == 0){
-      dp[g] = (g / 5);
-      return dp[g];
+    dp[4] = INT_MAX;
+    dp[5] = 1;
+    for (int i =6; i<=N; i++) {
+        dp[i] = INT_MAX;
+        if (dp[i-5] != INT_MAX) {
+            dp[i] = dp[i-5] + 1;
+        }
+        if (dp[i-3] != INT_MAX) {
+            dp[i] = min(dp[i-3]+1, dp[i]);
+        } 
     }
-    else{
-      dp[g] = find_sugarbag(g-3) + 1;
-    }
-  }
-
-  if(possible == 1){
-    return -1;
-  }
-  else{
-    return dp[g];
-  }
-
 }
