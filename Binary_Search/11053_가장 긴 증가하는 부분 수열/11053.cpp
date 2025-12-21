@@ -17,7 +17,7 @@ int main() {
     cin >> N;
 
     int temp;
-    
+
     for (int i =0; i<N; i++) {
         cin >> temp;    
         inp.push_back(temp);
